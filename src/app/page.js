@@ -108,6 +108,7 @@ const projects = [
     category: "Web Application",
     technologies: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS"],
     featured: true,
+    image: "/pup.png",
     gradient: "from-blue-500 to-cyan-500"
   },
   {
@@ -118,6 +119,7 @@ const projects = [
     category: "Digital Gallery",
     technologies: ["Wix", "Web Design", "UI/UX", "Content Curation"],
     featured: false,
+    image: "/poe.jfif",
     gradient: "from-violet-500 to-purple-500"
   },
   {
@@ -128,6 +130,7 @@ const projects = [
     category: "Photography Platform",
     technologies: ["Next.js", "React", "Vercel", "Image Optimization"],
     featured: false,
+    image: "/ejgallery.png",
     gradient: "from-cyan-500 to-teal-500"
   },
   {
@@ -138,6 +141,7 @@ const projects = [
     category: "Management System",
     technologies: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS", "Framer Motion"],
     featured: true,
+    image: "/riverobh.png",
     gradient: "from-green-500 to-emerald-500"
   }
 ];
@@ -268,7 +272,7 @@ export default function Home() {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-cyan-400/20 to-blue-500/20 bg-cover bg-center ring-2 ring-cyan-400/60 flex items-center justify-center">
-                  <Image src="/elijah.jpg" alt="Elijah Rivero" width={200} height={200} className="w-full h-full object-cover" priority />
+                  <Image src="/eli.png" alt="Elijah Rivero" width={200} height={200} className="w-full h-full object-cover" priority />
                 </div>
               </motion.div>
               
@@ -297,7 +301,7 @@ export default function Home() {
                 ⭐
               </motion.div>
 
-                          </div>
+            </div>
           </motion.div>
 
           {/* Name */}
@@ -443,8 +447,8 @@ export default function Home() {
                   <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 hover:border-blue-500/30 transition-colors duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                       <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500/20 to-violet-500/20 border border-blue-500/30 rounded-full text-blue-300 text-xs font-semibold">
-                        {exp.year}
-                      </span>
+                      {exp.year}
+                    </span>
                       <h4 className="font-semibold text-white text-sm sm:text-base">{exp.title}</h4>
                     </div>
                     <p className="text-cyan-400 text-sm mb-2">{exp.company}</p>
@@ -487,7 +491,7 @@ export default function Home() {
                     <h4 className="text-cyan-400 font-semibold text-sm">Frontend Development</h4>
                   </div>
                   <div className="space-y-2">
-                    {skillCategories["Frontend"].map((skill, index) => (
+                  {skillCategories["Frontend"].map((skill, index) => (
                       <div key={skill} className="flex items-center justify-between">
                         <span className="text-white text-xs sm:text-sm">{skill}</span>
                         <div className="w-16 sm:w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
@@ -496,13 +500,13 @@ export default function Home() {
                             initial={{ width: 0 }}
                             whileInView={{ width: `${85 + (index % 15)}%` }}
                             transition={{ duration: 0.8, delay: index * 0.05 + 0.3, ease: "easeOut" }}
-                            viewport={{ once: true }}
+                      viewport={{ once: true }}
                           />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+              </div>
               </motion.div>
 
               {/* Backend Skills */}
@@ -523,7 +527,7 @@ export default function Home() {
                     <h4 className="text-violet-400 font-semibold text-sm">Backend Development</h4>
                   </div>
                   <div className="space-y-2">
-                    {skillCategories["Backend"].map((skill, index) => (
+                  {skillCategories["Backend"].map((skill, index) => (
                       <div key={skill} className="flex items-center justify-between">
                         <span className="text-white text-xs sm:text-sm">{skill}</span>
                         <div className="w-16 sm:w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
@@ -532,13 +536,13 @@ export default function Home() {
                             initial={{ width: 0 }}
                             whileInView={{ width: `${75 + (index % 20)}%` }}
                             transition={{ duration: 0.8, delay: index * 0.05 + 0.4, ease: "easeOut" }}
-                            viewport={{ once: true }}
+                      viewport={{ once: true }}
                           />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+              </div>
               </motion.div>
 
               {/* Tools & Platforms */}
@@ -559,7 +563,7 @@ export default function Home() {
                     <h4 className="text-green-400 font-semibold text-sm">Tools & Platforms</h4>
                   </div>
                   <div className="space-y-2">
-                    {skillCategories["Tools & Platforms"].map((skill, index) => (
+                  {skillCategories["Tools & Platforms"].map((skill, index) => (
                       <div key={skill} className="flex items-center justify-between">
                         <span className="text-white text-xs sm:text-sm">{skill}</span>
                         <div className="w-16 sm:w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
@@ -568,13 +572,13 @@ export default function Home() {
                             initial={{ width: 0 }}
                             whileInView={{ width: `${80 + (index % 20)}%` }}
                             transition={{ duration: 0.8, delay: index * 0.05 + 0.5, ease: "easeOut" }}
-                            viewport={{ once: true }}
+                      viewport={{ once: true }}
                           />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+              </div>
               </motion.div>
             </div>
           </motion.div>
@@ -727,7 +731,10 @@ export default function Home() {
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Enhanced Gradient Header with 3D effect */}
-              <div className={`h-32 sm:h-40 bg-gradient-to-br ${project.gradient} relative overflow-hidden`} style={{ transform: "translateZ(20px)" }}>
+              <div className={`h-32 sm:h-40 ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`} relative overflow-hidden`} style={{ 
+                transform: "translateZ(20px)",
+                ...(project.image && { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' })
+              }}>
                 <motion.div 
                   className="absolute inset-0 bg-black/20"
                   animate={{ opacity: [0.2, 0.4, 0.2] }}
