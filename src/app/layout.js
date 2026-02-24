@@ -3,8 +3,8 @@ import Navigation from "./Navigation";
 import { Inter } from "next/font/google";
 
 export const metadata = {
-  title: "RiveroBH - Boarding House Management",
-  description: "Comprehensive boarding house management system for efficient operations and tenant management",
+  title: "Elijah Rivero",
+  description: "",
   icons: {
     icon: '/favicon.ico',
   },

@@ -24,6 +24,48 @@ import {
 } from "react-icons/fi";
 import { FaRocket } from "react-icons/fa";
 
+// Particle Background Component
+const ParticleBackground = () => {
+  // Use deterministic values based on index to prevent hydration mismatch
+  const particles = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    x: ((i * 137.5) % 100),
+    y: ((i * 89.3) % 100),
+    size: 1 + (i % 3),
+    duration: 10 + (i % 10),
+    delay: (i * 0.1) % 2
+  }));
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute bg-white rounded-full opacity-20"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+          }}
+          animate={{
+            x: [0, (particle.id % 3) * 20 - 10, 0],
+            y: [0, (particle.id % 3) * 20 - 10, 0],
+            opacity: [0.2, 0.8, 0.2],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 // Enhanced skills data with categories
 const skillCategories = {
   "Frontend": ["Next.js", "React.js", "Tailwind CSS", "HTML5", "CSS", "JavaScript (ES6+)"],
@@ -87,6 +129,16 @@ const projects = [
     technologies: ["Next.js", "React", "Vercel", "Image Optimization"],
     featured: false,
     gradient: "from-cyan-500 to-teal-500"
+  },
+  {
+    id: 4,
+    title: "RiveroBH",
+    description: "A comprehensive boarding house management system designed to streamline operations, manage tenants, track payments, and monitor room occupancy with an intuitive dashboard interface.",
+    url: "https://riverobh.vercel.app",
+    category: "Management System",
+    technologies: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS", "Framer Motion"],
+    featured: true,
+    gradient: "from-green-500 to-emerald-500"
   }
 ];
 
@@ -104,6 +156,9 @@ const certifications = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-transparent relative overflow-hidden">
+      {/* Enhanced Particle Background */}
+      <ParticleBackground />
+      
       {/* Animated Background Stars */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(50)].map((_, i) => {
@@ -138,49 +193,111 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center py-16 sm:py-20 relative z-10 px-4 sm:px-6">
+        {/* Floating Tech Icons */}
+        <motion.div
+          className="absolute top-20 left-10 text-4xl text-blue-400 opacity-30"
+          animate={{ 
+            y: [0, -20, 0],
+            rotate: [0, 10, -10, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          <FiCode />
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-40 right-20 text-3xl text-cyan-400 opacity-30"
+          animate={{ 
+            y: [0, -15, 0],
+            rotate: [0, -10, 10, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+        >
+          <FiGlobe />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-40 left-20 text-3xl text-violet-400 opacity-30"
+          animate={{ 
+            y: [0, -25, 0],
+            rotate: [0, 15, -15, 0],
+            scale: [1, 1.3, 1]
+          }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+        >
+          <FiDatabase />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-20 right-10 text-4xl text-green-400 opacity-30"
+          animate={{ 
+            y: [0, -18, 0],
+            rotate: [0, -15, 15, 0],
+            scale: [1, 1.25, 1]
+          }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 1.5 }}
+        >
+          <FiZap />
+        </motion.div>
+
         <div className="max-w-4xl mx-auto text-center">
-          {/* Profile / Avatar */}
+          {/* Enhanced Profile / Avatar */}
           <motion.div
             className="mb-4"
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            transition={{ duration: 1.2, type: "spring", stiffness: 100, damping: 20 }}
           >
-            <div className="avatar-container">
+            <div className="avatar-container relative">
               <motion.div
-                className="avatar-ring"
-                whileHover={{ scale: 1.04, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="avatar-ring relative"
+                whileHover={{ scale: 1.08, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="avatar-glow" aria-hidden="true" />
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-cyan-400/20 to-blue-500/20 bg-cover bg-center ring-1 ring-cyan-400/40 flex items-center justify-center">
+                <motion.div 
+                  className="avatar-glow absolute inset-0 rounded-full"
+                  animate={{
+                    boxShadow: [
+                      "0 0 20px rgba(34, 211, 238, 0.5)",
+                      "0 0 40px rgba(34, 211, 238, 0.8)",
+                      "0 0 20px rgba(34, 211, 238, 0.5)"
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-cyan-400/20 to-blue-500/20 bg-cover bg-center ring-2 ring-cyan-400/60 flex items-center justify-center">
                   <Image src="/elijah.jpg" alt="Elijah Rivero" width={200} height={200} className="w-full h-full object-cover" priority />
                 </div>
               </motion.div>
               
-              {/* Floating badges */}
+              {/* Enhanced Floating badges */}
               <motion.div
-                className="floating-badge bg-gradient-to-r from-green-400 to-blue-500 -top-4 -right-4"
+                className="floating-badge bg-gradient-to-r from-green-400 to-blue-500 -top-4 -right-4 shadow-lg shadow-green-500/30"
                 animate={{ 
-                  y: [0, -10, 0],
-                  scale: [1, 1.1, 1]
+                  y: [0, -15, 0],
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 5, -5, 0]
                 }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 3, repeat: Infinity }}
               >
                 ✓
               </motion.div>
               
               <motion.div
-                className="floating-badge bg-gradient-to-r from-yellow-400 to-orange-500 -bottom-4 -left-4 w-6 h-6 text-xs"
+                className="floating-badge bg-gradient-to-r from-yellow-400 to-orange-500 -bottom-4 -left-4 w-6 h-6 text-xs shadow-lg shadow-yellow-500/30"
                 animate={{ 
-                  y: [0, 10, 0],
-                  scale: [1, 0.9, 1]
+                  y: [0, 12, 0],
+                  scale: [1, 0.8, 1],
+                  rotate: [0, -5, 5, 0]
                 }}
-                transition={{ duration: 2.5, repeat: Infinity }}
+                transition={{ duration: 2.8, repeat: Infinity, delay: 0.5 }}
               >
                 ⭐
               </motion.div>
-            </div>
+
+                          </div>
           </motion.div>
 
           {/* Name */}
@@ -251,7 +368,7 @@ export default function Home() {
               whileTap={{ scale: 0.98 }}
             >
               <span className="text-xl sm:text-2xl">💻</span>
-              <span className="font-semibold text-xs sm:text-sm">5+ Projects</span>
+              <span className="font-semibold text-xs sm:text-sm">6+ Projects</span>
             </motion.div>
             <motion.div
               className="highlight-card"
@@ -304,34 +421,34 @@ export default function Home() {
             transition={{ duration: 0.8, type: "spring", stiffness: 120 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-              <FiBook className="text-primary text-lg sm:text-2xl" />
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <FiBook className="text-primary text-xl sm:text-2xl" />
               My Journey
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {experience.map((exp, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start gap-4"
+                  className="relative pl-8 pb-6 border-l-2 border-blue-500/30 last:border-l-0"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * (index + 1), type: "spring", stiffness: 150 }}
+                  transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 150 }}
                   viewport={{ once: true }}
                 >
-                  <div className="relative flex flex-col items-center">
-                    <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-blue-500 to-violet-600 rounded-full ring-4 ring-blue-500/20"></div>
-                    {index < experience.length - 1 && (
-                      <div className="w-0.5 flex-1 min-h-[60px] bg-gradient-to-b from-blue-500/60 to-violet-600/30"></div>
-                    )}
-                  </div>
-                  <div className="flex-1 pb-2">
-                    <span className="inline-block px-2.5 py-0.5 mb-2 bg-gradient-to-r from-blue-500/20 to-violet-500/20 border border-blue-500/30 rounded-full text-blue-300 text-[10px] sm:text-xs font-semibold">
-                      {exp.year}
-                    </span>
-                    <h4 className="font-semibold text-white mb-1 text-sm sm:text-base">{exp.title}</h4>
-                    <p className="text-cyan-400 text-xs sm:text-sm mb-1">{exp.company}</p>
-                    <p className="text-secondary text-xs sm:text-sm">{exp.description}</p>
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-0 w-4 h-4 bg-gradient-to-br from-blue-500 to-violet-600 rounded-full transform -translate-x-1/2 border-2 border-slate-900"></div>
+                  
+                  {/* Content */}
+                  <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 hover:border-blue-500/30 transition-colors duration-300">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500/20 to-violet-500/20 border border-blue-500/30 rounded-full text-blue-300 text-xs font-semibold">
+                        {exp.year}
+                      </span>
+                      <h4 className="font-semibold text-white text-sm sm:text-base">{exp.title}</h4>
+                    </div>
+                    <p className="text-cyan-400 text-sm mb-2">{exp.company}</p>
+                    <p className="text-secondary text-xs sm:text-sm leading-relaxed">{exp.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -340,86 +457,125 @@ export default function Home() {
 
           {/* Skills & Expertise Card */}
           <motion.div
-            className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8"
+            className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 p-6 sm:p-8"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 120 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <FiZap className="text-primary" />
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <FiZap className="text-primary text-xl sm:text-2xl" />
               Skills & Expertise
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Frontend Skills */}
-              <div>
-                <h4 className="text-cyan-400 font-semibold mb-2 sm:mb-3 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
-                  <FiGlobe className="text-xs sm:text-sm" />
-                  Frontend
-                </h4>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skillCategories["Frontend"].map((skill, index) => (
-                    <motion.span
-                      key={skill}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-300 text-[10px] sm:text-xs md:text-sm font-medium"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 200 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.3)" }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
+              <motion.div
+                className="relative pl-8 pb-4 border-l-2 border-cyan-500/30"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 150 }}
+                viewport={{ once: true }}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 top-0 w-4 h-4 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full transform -translate-x-1/2 border-2 border-slate-900"></div>
+                
+                {/* Content */}
+                <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 hover:border-cyan-500/30 transition-colors duration-300">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FiGlobe className="text-cyan-400 text-sm" />
+                    <h4 className="text-cyan-400 font-semibold text-sm">Frontend Development</h4>
+                  </div>
+                  <div className="space-y-2">
+                    {skillCategories["Frontend"].map((skill, index) => (
+                      <div key={skill} className="flex items-center justify-between">
+                        <span className="text-white text-xs sm:text-sm">{skill}</span>
+                        <div className="w-16 sm:w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-400 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${85 + (index % 15)}%` }}
+                            transition={{ duration: 0.8, delay: index * 0.05 + 0.3, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Backend Skills */}
-              <div>
-                <h4 className="text-cyan-400 font-semibold mb-2 sm:mb-3 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
-                  <FiDatabase className="text-xs sm:text-sm" />
-                  Backend
-                </h4>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skillCategories["Backend"].map((skill, index) => (
-                    <motion.span
-                      key={skill}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-violet-500/20 border border-violet-500/30 rounded-full text-violet-300 text-[10px] sm:text-xs md:text-sm font-medium"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 200 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05, backgroundColor: "rgba(139, 92, 246, 0.3)" }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
+              <motion.div
+                className="relative pl-8 pb-4 border-l-2 border-violet-500/30"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 150 }}
+                viewport={{ once: true }}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 top-0 w-4 h-4 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full transform -translate-x-1/2 border-2 border-slate-900"></div>
+                
+                {/* Content */}
+                <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 hover:border-violet-500/30 transition-colors duration-300">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FiDatabase className="text-violet-400 text-sm" />
+                    <h4 className="text-violet-400 font-semibold text-sm">Backend Development</h4>
+                  </div>
+                  <div className="space-y-2">
+                    {skillCategories["Backend"].map((skill, index) => (
+                      <div key={skill} className="flex items-center justify-between">
+                        <span className="text-white text-xs sm:text-sm">{skill}</span>
+                        <div className="w-16 sm:w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-violet-500 to-purple-400 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${75 + (index % 20)}%` }}
+                            transition={{ duration: 0.8, delay: index * 0.05 + 0.4, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Tools & Platforms */}
-              <div>
-                <h4 className="text-cyan-400 font-semibold mb-2 sm:mb-3 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
-                  <FiZap className="text-xs sm:text-sm" />
-                  Tools & Platforms
-                </h4>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skillCategories["Tools & Platforms"].map((skill, index) => (
-                    <motion.span
-                      key={skill}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-[10px] sm:text-xs md:text-sm font-medium"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 200 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05, backgroundColor: "rgba(6, 182, 212, 0.3)" }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
+              <motion.div
+                className="relative pl-8 border-l-2 border-green-500/30"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 150 }}
+                viewport={{ once: true }}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 top-0 w-4 h-4 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full transform -translate-x-1/2 border-2 border-slate-900"></div>
+                
+                {/* Content */}
+                <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 hover:border-green-500/30 transition-colors duration-300">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FiZap className="text-green-400 text-sm" />
+                    <h4 className="text-green-400 font-semibold text-sm">Tools & Platforms</h4>
+                  </div>
+                  <div className="space-y-2">
+                    {skillCategories["Tools & Platforms"].map((skill, index) => (
+                      <div key={skill} className="flex items-center justify-between">
+                        <span className="text-white text-xs sm:text-sm">{skill}</span>
+                        <div className="w-16 sm:w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${80 + (index % 20)}%` }}
+                            transition={{ duration: 0.8, delay: index * 0.05 + 0.5, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -556,32 +712,72 @@ export default function Home() {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 hover:border-cyan-400/30 overflow-hidden transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 120 }}
+              className="group relative bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 hover:border-cyan-400/50 overflow-hidden transition-all duration-500 preserve-3d"
+              initial={{ opacity: 0, y: 50, rotateX: 15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.15, type: "spring", stiffness: 100, damping: 20 }}
               viewport={{ once: true }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              whileHover={{ 
+                y: -15, 
+                scale: 1.05,
+                rotateX: 5,
+                rotateY: 5,
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(34, 211, 238, 0.3)"
+              }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              {/* Gradient Header */}
-              <div className={`h-32 sm:h-40 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+              {/* Enhanced Gradient Header with 3D effect */}
+              <div className={`h-32 sm:h-40 bg-gradient-to-br ${project.gradient} relative overflow-hidden`} style={{ transform: "translateZ(20px)" }}>
+                <motion.div 
+                  className="absolute inset-0 bg-black/20"
+                  animate={{ opacity: [0.2, 0.4, 0.2] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                />
+                
+                {/* Floating particles in header */}
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-white rounded-full"
+                    style={{
+                      left: `${20 + i * 15}%`,
+                      top: `${30 + (i % 3) * 20}%`,
+                    }}
+                    animate={{
+                      y: [0, -10, 0],
+                      opacity: [0.3, 1, 0.3],
+                    }}
+                    transition={{
+                      duration: 2 + i * 0.5,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
+                
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white group-hover:scale-125 transition-transform duration-500 group-hover:rotate-12">
                   <FiExternalLink className="text-lg" />
                 </div>
                 <div className="absolute bottom-4 left-4">
-                  <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium flex items-center gap-1.5">
+                  <motion.span 
+                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium flex items-center gap-1.5"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+                  >
                     <FiLayers className="text-sm" />
                     {project.category}
-                  </span>
+                  </motion.span>
                 </div>
                 {project.featured && (
-                  <div className="absolute top-4 left-4">
+                  <motion.div 
+                    className="absolute top-4 left-4"
+                    animate={{ rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
                     <span className="px-2 py-1 bg-yellow-500/90 rounded-full text-black text-[10px] font-bold flex items-center gap-1">
                       <FiStar className="text-xs" />
                       Featured
                     </span>
-                  </div>
+                  </motion.div>
                 )}
               </div>
 
