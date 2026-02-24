@@ -734,17 +734,22 @@ export default function Home() {
               <div className={`h-32 sm:h-40 relative overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`}`} style={{ 
                 transform: "translateZ(20px)",
                 ...(project.image && { 
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${project.image})`,
+                  backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${project.image})`,
                   backgroundSize: 'cover', 
                   backgroundPosition: 'center',
                   backgroundBlendMode: 'overlay'
                 })
               }}>
                 <motion.div 
-                  className="absolute inset-0 bg-black/20"
-                  animate={{ opacity: [0.2, 0.4, 0.2] }}
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+                  animate={{ opacity: [0.4, 0.6, 0.4] }}
                   transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
                 />
+                
+                {/* Enhanced separation and depth */}
+                <div className="absolute inset-0 border-t border-white/20 border-l border-r border-white/10 rounded-t-2xl sm:rounded-t-3xl pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 shadow-inner pointer-events-none" />
                 
                 {/* Floating particles in header */}
                 {[...Array(5)].map((_, i) => (
