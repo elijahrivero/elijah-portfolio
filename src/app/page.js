@@ -396,6 +396,172 @@ export default function Home() {
         </div>
       </section>
 
+      
+      {/* Projects Section */}
+      <section id="work" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
+        <motion.div
+          className="text-center mb-12 sm:mb-20"
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 120, damping: 18 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 200 }}
+              viewport={{ once: true }}
+            >
+              <FiCode className="text-primary text-2xl sm:text-3xl md:text-4xl" />
+            </motion.div>
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 120 }}
+              viewport={{ once: true }}
+            >
+              Featured Projects
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
+              viewport={{ once: true }}
+            >
+              <FiCode className="text-primary text-2xl sm:text-3xl md:text-4xl" />
+            </motion.div>
+          </div>
+          <motion.p
+            className="text-base sm:text-lg md:text-xl text-secondary max-w-2xl mx-auto px-4 sm:px-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+          >
+            A selection of projects I&apos;ve built and contributed to
+          </motion.p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {projects.map((project, index) => (
+            <motion.a
+              key={project.id}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 hover:border-cyan-400/50 overflow-hidden transition-all duration-500 preserve-3d"
+              initial={{ opacity: 0, y: 50, rotateX: 15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.15, type: "spring", stiffness: 100, damping: 20 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                y: -15, 
+                scale: 1.05,
+                rotateX: 5,
+                rotateY: 5,
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(34, 211, 238, 0.3)"
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {/* Enhanced Gradient Header with 3D effect */}
+              <div className={`h-32 sm:h-40 relative overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`}`} style={{ 
+                transform: "translateZ(20px)",
+                ...(project.image && { 
+                  backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${project.image})`,
+                  backgroundSize: 'cover', 
+                  backgroundPosition: 'center',
+                  backgroundBlendMode: 'overlay'
+                })
+              }}>
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+                  animate={{ opacity: [0.4, 0.6, 0.4] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                />
+                
+                {/* Enhanced separation and depth */}
+                <div className="absolute inset-0 border-t border-white/20 border-l border-r border-white/10 rounded-t-2xl sm:rounded-t-3xl pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 shadow-inner pointer-events-none" />
+                
+                {/* Floating particles in header */}
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-white rounded-full"
+                    style={{
+                      left: `${20 + i * 15}%`,
+                      top: `${30 + (i % 3) * 20}%`,
+                    }}
+                    animate={{
+                      y: [0, -10, 0],
+                      opacity: [0.3, 1, 0.3],
+                    }}
+                    transition={{
+                      duration: 2 + i * 0.5,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
+                
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white group-hover:scale-125 transition-transform duration-500 group-hover:rotate-12">
+                  <FiExternalLink className="text-lg" />
+                </div>
+                <div className="absolute bottom-4 left-4">
+                  <motion.span 
+                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium flex items-center gap-1.5"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+                  >
+                    <FiLayers className="text-sm" />
+                    {project.category}
+                  </motion.span>
+                </div>
+                {project.featured && (
+                  <motion.div 
+                    className="absolute top-4 left-4"
+                    animate={{ rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
+                    <span className="px-2 py-1 bg-yellow-500/90 rounded-full text-black text-[10px] font-bold flex items-center gap-1">
+                      <FiStar className="text-xs" />
+                      Featured
+                    </span>
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="p-5 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-secondary text-sm mb-4 line-clamp-3">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-300 text-[10px] sm:text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 4 && (
+                    <span className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-secondary text-[10px] sm:text-xs">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -660,171 +826,6 @@ export default function Home() {
             ))}
           </div>
         </motion.div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="work" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
-        <motion.div
-          className="text-center mb-12 sm:mb-20"
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, type: "spring", stiffness: 120, damping: 18 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 200 }}
-              viewport={{ once: true }}
-            >
-              <FiCode className="text-primary text-2xl sm:text-3xl md:text-4xl" />
-            </motion.div>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 120 }}
-              viewport={{ once: true }}
-            >
-              Featured Projects
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
-              viewport={{ once: true }}
-            >
-              <FiCode className="text-primary text-2xl sm:text-3xl md:text-4xl" />
-            </motion.div>
-          </div>
-          <motion.p
-            className="text-base sm:text-lg md:text-xl text-secondary max-w-2xl mx-auto px-4 sm:px-0"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
-            viewport={{ once: true }}
-          >
-            A selection of projects I&apos;ve built and contributed to
-          </motion.p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {projects.map((project, index) => (
-            <motion.a
-              key={project.id}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 hover:border-cyan-400/50 overflow-hidden transition-all duration-500 preserve-3d"
-              initial={{ opacity: 0, y: 50, rotateX: 15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.15, type: "spring", stiffness: 100, damping: 20 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -15, 
-                scale: 1.05,
-                rotateX: 5,
-                rotateY: 5,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(34, 211, 238, 0.3)"
-              }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {/* Enhanced Gradient Header with 3D effect */}
-              <div className={`h-32 sm:h-40 relative overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`}`} style={{ 
-                transform: "translateZ(20px)",
-                ...(project.image && { 
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${project.image})`,
-                  backgroundSize: 'cover', 
-                  backgroundPosition: 'center',
-                  backgroundBlendMode: 'overlay'
-                })
-              }}>
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
-                  animate={{ opacity: [0.4, 0.6, 0.4] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                />
-                
-                {/* Enhanced separation and depth */}
-                <div className="absolute inset-0 border-t border-white/20 border-l border-r border-white/10 rounded-t-2xl sm:rounded-t-3xl pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
-                <div className="absolute inset-0 shadow-inner pointer-events-none" />
-                
-                {/* Floating particles in header */}
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 bg-white rounded-full"
-                    style={{
-                      left: `${20 + i * 15}%`,
-                      top: `${30 + (i % 3) * 20}%`,
-                    }}
-                    animate={{
-                      y: [0, -10, 0],
-                      opacity: [0.3, 1, 0.3],
-                    }}
-                    transition={{
-                      duration: 2 + i * 0.5,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                    }}
-                  />
-                ))}
-                
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white group-hover:scale-125 transition-transform duration-500 group-hover:rotate-12">
-                  <FiExternalLink className="text-lg" />
-                </div>
-                <div className="absolute bottom-4 left-4">
-                  <motion.span 
-                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium flex items-center gap-1.5"
-                    whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-                  >
-                    <FiLayers className="text-sm" />
-                    {project.category}
-                  </motion.span>
-                </div>
-                {project.featured && (
-                  <motion.div 
-                    className="absolute top-4 left-4"
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  >
-                    <span className="px-2 py-1 bg-yellow-500/90 rounded-full text-black text-[10px] font-bold flex items-center gap-1">
-                      <FiStar className="text-xs" />
-                      Featured
-                    </span>
-                  </motion.div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="p-5 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <p className="text-secondary text-sm mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-300 text-[10px] sm:text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <span className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-secondary text-[10px] sm:text-xs">
-                      +{project.technologies.length - 4}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </motion.a>
-          ))}
-        </div>
       </section>
 
       {/* Contact Section */}

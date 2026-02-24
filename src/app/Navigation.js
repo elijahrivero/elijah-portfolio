@@ -7,9 +7,9 @@ import InteractiveBg from "./InteractiveBg";
 
 const navLinks = [
   { href: "#home", label: "Home", icon: <FiHome /> },
+  { href: "#work", label: "Work", icon: <FiGrid /> },
   { href: "#about", label: "About", icon: <FiUser /> },
   { href: "#certifications", label: "Certifications", icon: <FiAward /> },
-  { href: "#work", label: "Work", icon: <FiGrid /> },
   { href: "#contact", label: "Contact", icon: <FiMail /> },
 ];
 
@@ -34,19 +34,18 @@ export default function Navigation({ children }) {
         const section = document.querySelector(link.href);
         return {
           href: link.href,
-          top: section ? section.offsetTop : 0,
+          top: section ? section.offsetTop - 100 : 0, // Adjust for earlier activation
           bottom: section ? section.offsetTop + section.offsetHeight : 0
         };
       });
 
       // Find which section we're currently in
-      const viewportCenter = scrollY + window.innerHeight / 3;
       let current = "#home";
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (scrollY + 150 >= sections[i].top) {
-          current = sections[i].href;
-          break;
+      
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (scrollY >= section.top - 50) { // Earlier activation with 50px buffer
+          current = section.href;
         }
       }
 
