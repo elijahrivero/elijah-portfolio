@@ -3,8 +3,8 @@ import Navigation from "./Navigation";
 import { Inter } from "next/font/google";
 
 export const metadata = {
-  title: "Elijah Rivero - Web Developer",
-  description: "Portfolio of Elijah Rivero, a passionate web developer specializing in modern web experiences",
+  title: "RiveroBH - Boarding House Management",
+  description: "Comprehensive boarding house management system for efficient operations and tenant management",
   icons: {
     icon: '/favicon.ico',
   },
