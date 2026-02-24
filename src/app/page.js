@@ -112,17 +112,6 @@ const projects = [
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    id: 2,
-    title: "Palette of Eternity",
-    description: "A curated digital platform celebrating 30 works of human expression across Literary, Visual, and Performing Arts. Developed as a centralized hub to explore the connections between different artistic storytelling formats.",
-    url: "https://elijahriverooooo.wixsite.com/palette-of-eternit-2",
-    category: "Digital Gallery",
-    technologies: ["Wix", "Web Design", "UI/UX", "Content Curation"],
-    featured: false,
-    image: "/poe.jfif",
-    gradient: "from-violet-500 to-purple-500"
-  },
-  {
     id: 3,
     title: "Elijah Gallery",
     description: "A custom-built digital gallery platform featuring curated photographic albums, built with a focus on performance and clean aesthetics.",
@@ -143,6 +132,17 @@ const projects = [
     featured: true,
     image: "/riverobh.png",
     gradient: "from-green-500 to-emerald-500"
+  },
+  {
+    id: 2,
+    title: "Palette of Eternity",
+    description: "A curated digital platform celebrating 30 works of human expression across Literary, Visual, and Performing Arts. Developed as a centralized hub to explore the connections between different artistic storytelling formats.",
+    url: "https://elijahriverooooo.wixsite.com/palette-of-eternit-2",
+    category: "Digital Gallery",
+    technologies: ["Wix", "Web Design", "UI/UX", "Content Curation"],
+    featured: false,
+    image: "/poe.jfif",
+    gradient: "from-violet-500 to-purple-500"
   }
 ];
 
@@ -731,9 +731,14 @@ export default function Home() {
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Enhanced Gradient Header with 3D effect */}
-              <div className={`h-32 sm:h-40 ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`} relative overflow-hidden`} style={{ 
+              <div className={`h-32 sm:h-40 relative overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`}`} style={{ 
                 transform: "translateZ(20px)",
-                ...(project.image && { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' })
+                ...(project.image && { 
+                  backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${project.image})`,
+                  backgroundSize: 'cover', 
+                  backgroundPosition: 'center',
+                  backgroundBlendMode: 'overlay'
+                })
               }}>
                 <motion.div 
                   className="absolute inset-0 bg-black/20"
