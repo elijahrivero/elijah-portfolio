@@ -331,7 +331,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 120 }}
           >
-            Building AI-powered, responsive, and scalable web apps that make a difference.
+            Crafting scalable full-stack applications using modern technologies to deliver efficient and user-centered solutions
           </motion.p>
 
           {/* Buttons */}
@@ -372,7 +372,7 @@ export default function Home() {
               whileTap={{ scale: 0.98 }}
             >
               <span className="text-xl sm:text-2xl">💻</span>
-              <span className="font-semibold text-xs sm:text-sm">6+ Projects</span>
+              <span className="font-semibold text-xs sm:text-sm">5+ Projects</span>
             </motion.div>
             <motion.div
               className="highlight-card"
