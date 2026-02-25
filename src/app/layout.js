@@ -8,6 +8,9 @@ export const metadata = {
   icons: {
     icon: '/favicon.ico',
   },
+  verification: {
+    google: 'f-I4u-5qnXGxnlBcU9-5KQsmWDiQ8S211Vf69nGsFeE',
+  },
 };
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
