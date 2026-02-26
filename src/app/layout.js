@@ -6,7 +6,7 @@ export const metadata = {
   title: "Elijah Rivero",
   description: "",
   icons: {
-    icon: '/eli.png',
+    icon: '/elijahhh.JPG',
   },
   verification: {
     google: 'f-I4u-5qnXGxnlBcU9-5KQsmWDiQ8S211Vf69nGsFeE',
