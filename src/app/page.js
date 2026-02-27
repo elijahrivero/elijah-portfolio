@@ -159,94 +159,43 @@ const certifications = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-transparent relative overflow-hidden">
-      {/* Enhanced Particle Background */}
-      <ParticleBackground />
-      
-      {/* Animated Background Stars */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(50)].map((_, i) => {
-          // Use deterministic positioning based on index to avoid hydration mismatch
-          const left = ((i * 137.5) % 100) + (i % 3) * 0.5;
-          const top = ((i * 89.3) % 100) + (i % 5) * 0.3;
-          const delay = (i * 0.1) % 2;
-          const duration = 2 + (i % 3) + 0.5;
-          
-          return (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white/30 rounded-full"
-              style={{
-                left: `${left}%`,
-                top: `${top}%`,
-              }}
-              animate={{
-                opacity: [0.3, 1, 0.3],
-                scale: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: duration,
-                repeat: Infinity,
-                delay: delay,
-              }}
-            />
-          );
-        })}
-      </div>
-
+    <>
+      {/* Schema.org structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Elijah Rivero",
+            "jobTitle": "Full Stack Developer",
+            "description": "Crafting scalable full-stack applications using modern technologies to deliver efficient and user-centered solutions.",
+            "url": "https://elijahrivero.vercel.app",
+            "image": "https://elijahrivero.vercel.app/ej.png",
+            "knowsAbout": [
+              "Web Development",
+              "Full Stack Development", 
+              "Next.js",
+              "React",
+              "Node.js",
+              "MongoDB",
+              "Tailwind CSS"
+            ],
+            "offers": {
+              "@type": "Service",
+              "serviceType": "Web Development Services",
+              "description": "Full-stack web application development, management systems, and digital galleries"
+            }
+          })
+        }}
+      />
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center py-16 sm:py-20 relative z-10 px-4 sm:px-6">
-        {/* Floating Tech Icons */}
-        <motion.div
-          className="absolute top-20 left-10 text-4xl text-blue-400 opacity-30"
-          animate={{ 
-            y: [0, -20, 0],
-            rotate: [0, 10, -10, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
-          <FiCode />
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-40 right-20 text-3xl text-cyan-400 opacity-30"
-          animate={{ 
-            y: [0, -15, 0],
-            rotate: [0, -10, 10, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
-        >
-          <FiGlobe />
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-40 left-20 text-3xl text-violet-400 opacity-30"
-          animate={{ 
-            y: [0, -25, 0],
-            rotate: [0, 15, -15, 0],
-            scale: [1, 1.3, 1]
-          }}
-          transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-        >
-          <FiDatabase />
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-20 right-10 text-4xl text-green-400 opacity-30"
-          animate={{ 
-            y: [0, -18, 0],
-            rotate: [0, -15, 15, 0],
-            scale: [1, 1.25, 1]
-          }}
-          transition={{ duration: 4.5, repeat: Infinity, delay: 1.5 }}
-        >
-          <FiZap />
-        </motion.div>
+        <header className="text-center max-w-4xl mx-auto">
+          {/* Main heading for SEO */}
+          <h1 className="sr-only">Elijah Rivero - Full Stack Developer</h1>
 
-        <div className="max-w-4xl mx-auto text-center">
           {/* Enhanced Profile / Avatar */}
           <motion.div
             className="mb-4"
@@ -393,10 +342,9 @@ export default function Home() {
           </motion.div>
 
           {/* Social Icons removed per request */}
-        </div>
+        </header>
       </section>
 
-      
       {/* Projects Section */}
       <section id="work" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
         <motion.div
