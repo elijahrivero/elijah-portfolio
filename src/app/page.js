@@ -23,6 +23,7 @@ import {
   FiLayers
 } from "react-icons/fi";
 import { FaRocket } from "react-icons/fa";
+import SimpleChatbot from "./components/SimpleChatbot";
 
 // Particle Background Component
 const ParticleBackground = () => {
@@ -872,6 +873,9 @@ export default function Home() {
         <div className="absolute -top-20 -left-20 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl" />
       </section>
-    </main>
+
+      {/* AI Chatbot */}
+      <SimpleChatbot />
+    </>
   );
 }
