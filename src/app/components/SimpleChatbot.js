@@ -9,7 +9,7 @@ const SimpleChatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Elijah Rivero. I'd love to tell you about my skills, projects, and experience. How can I help you today?",
+      text: "Hi! I'm Elijah Joyce Rivero, Elijah's AI Representative. I'm here to tell you about his skills, projects, and help you understand why you should hire him. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -43,28 +43,35 @@ const SimpleChatbot = () => {
 
     // Pre-programmed responses about Elijah
     const responses = {
-      'skills': 'I\'m proficient in Next.js, React, Node.js, MongoDB, Tailwind CSS, and more. I specialize in full-stack development with expertise in both frontend and backend technologies.',
-      'projects': 'I\'ve built several impressive projects including PUP Guidance Center (web application), RiveroBH (management system), Elijah Gallery (photography platform), and Palette of Eternity (digital gallery).',
-      'experience': 'I\'m currently working as a Junior Developer at LiftFront and have freelance experience. I\'m pursuing a BS in Information Technology at Polytechnic University of the Philippines.',
-      'contact': 'You can reach me through my portfolio contact section or email me at riveroelijah5@gmail.com. I\'m always open to discussing new opportunities and collaborations.',
-      'education': 'I\'m studying BS Information Technology at Polytechnic University of the Philippines. I also have several certifications in cybersecurity and IT.',
-      'about': 'I\'m Elijah Rivero, a passionate Full Stack Developer who loves crafting scalable applications using modern technologies. I focus on delivering efficient and user-centered solutions.',
-      'hobbies': 'When I\'m not coding, I enjoy photography, exploring new technologies, and contributing to open-source projects. I\'m also interested in AI and machine learning applications.',
-      'availability': 'I\'m currently open to freelance opportunities and full-time positions. I\'m particularly interested in roles involving modern web technologies and innovative projects.',
-      'technologies': 'I work with a modern tech stack including Next.js, React, Node.js, MongoDB, Tailwind CSS, TypeScript, Git, Vercel, and various cloud services.',
-      'background': 'I started my journey in web development during college and have since built multiple production applications. I combine academic knowledge with practical experience.',
-      'goals': 'I aim to become a senior full-stack developer and eventually lead development teams. I\'m passionate about creating impactful applications that solve real-world problems.',
-      'services': 'I offer web development services including custom websites, web applications, API development, database design, and technical consulting.',
-      'family': 'I come from a loving family. My mother is Epifania Rivero and my father is Dante Rivero. I have a brother named David Angelo Rivero who I hold dear. They have all been supportive of my journey in technology and web development.',
-      'mother': 'My mother is Epifania Rivero. She has been a wonderful source of support and encouragement throughout my educational and professional journey.',
-      'father': 'My father is Dante Rivero. He has supported my passion for technology and has been proud of my achievements in web development.',
-      'parents': 'My parents are Epifania Rivero and Dante Rivero. They have been incredibly supportive of my career in technology and continue to encourage my growth as a developer.',
-      'brother': 'My brother is David Angelo Rivero, who I consider my favorite brother. We share a close bond and David has been supportive of my journey in web development and technology.',
-      'david': 'David Angelo Rivero is my brother. We have a special relationship and David has been a source of support and encouragement in my life and career.',
-      'siblings': 'I have a brother named David Angelo Rivero. We share a close relationship and David has been supportive of my pursuits in technology and web development.',
-      'crush': 'That\'s my little secret! Some things are best kept mysterious, don\'t you think? 😊',
-      'love': 'I believe in focusing on my career and personal growth right now. When the time is right, the right person will come along!',
-      'relationship': 'I\'m currently focused on my journey as a developer and building amazing things. Relationships happen when they\'re meant to happen!'
+      'skills': 'Elijah is proficient in Next.js, React, Node.js, MongoDB, Tailwind CSS, and more. He specializes in full-stack development with expertise in both frontend and backend technologies.',
+      'projects': 'Elijah has built several impressive projects including PUP Guidance Center (web application), RiveroBH (management system), Elijah Gallery (photography platform), and Palette of Eternity (digital gallery).',
+      'experience': 'Elijah is currently a Junior Developer at LiftFront and has freelance experience. He\'s pursuing a BS in Information Technology at Polytechnic University of the Philippines.',
+      'contact': 'You can reach Elijah through his portfolio contact section or email him at riveroelijah5@gmail.com. He\'s always open to discussing new opportunities and collaborations.',
+      'education': 'Elijah is studying BS Information Technology at Polytechnic University of the Philippines. He also has several certifications in cybersecurity and IT.',
+      'about': 'Elijah Rivero is a passionate Full Stack Developer who loves crafting scalable applications using modern technologies. He focuses on delivering efficient and user-centered solutions.',
+      'hobbies': 'When not coding, Elijah enjoys photography, exploring new technologies, and contributing to open-source projects. He\'s also interested in AI and machine learning applications.',
+      'availability': 'Elijah is currently open to freelance opportunities and full-time positions. He\'s particularly interested in roles involving modern web technologies and innovative projects.',
+      'technologies': 'Elijah works with a modern tech stack including Next.js, React, Node.js, MongoDB, Tailwind CSS, TypeScript, Git, Vercel, and various cloud services.',
+      'background': 'Elijah started his journey in web development during college and has since built multiple production applications. He combines academic knowledge with practical experience.',
+      'goals': 'Elijah aims to become a senior full-stack developer and eventually lead development teams. He\'s passionate about creating impactful applications that solve real-world problems.',
+      'services': 'Elijah offers web development services including custom websites, web applications, API development, database design, and technical consulting.',
+      'family': 'Elijah comes from a loving family. His mother is Epifania Rivero and his father is Dante Rivero. He has a brother named David Angelo Rivero who he holds dear. They have all been supportive of his journey in technology and web development.',
+      'mother': 'Elijah\'s mother is Epifania Rivero. She has been a wonderful source of support and encouragement throughout his educational and professional journey.',
+      'father': 'Elijah\'s father is Dante Rivero. He has supported Elijah\'s passion for technology and has been proud of his achievements in web development.',
+      'parents': 'Elijah\'s parents are Epifania Rivero and Dante Rivero. They have been incredibly supportive of his career in technology and continue to encourage his growth as a developer.',
+      'brother': 'Elijah\'s brother is David Angelo Rivero, who he considers his favorite brother. They share a close bond and David has been supportive of Elijah\'s journey in web development and technology.',
+      'david': 'David Angelo Rivero is Elijah\'s brother. They have a special relationship and David has been a source of support and encouragement in Elijah\'s life and career.',
+      'siblings': 'Elijah has a brother named David Angelo Rivero. They share a close relationship and David has been supportive of Elijah\'s pursuits in technology and web development.',
+      'crush': 'That\'s Elijah\'s little secret! Some things are best kept mysterious, don\'t you think? 😊',
+      'love': 'Elijah believes in focusing on his career and personal growth right now. When the time is right, the right person will come along!',
+      'relationship': 'Elijah is currently focused on his journey as a developer and building amazing things. Relationships happen when they\'re meant to happen!',
+      'school': 'Elijah is studying at Polytechnic University of the Philippines (PUP), one of the premier state universities in the country. He\'s proud to be a PUP student!',
+      'pup': 'PUP stands for Polytechnic University of the Philippines. As a PUP student, Elijah embodies the university\'s values of excellence, service, and national pride. Go PUP! 🎓',
+      'hire': 'Elijah is an excellent candidate for any web development role! With his strong technical skills in Next.js, React, and Node.js, plus his experience with real projects like the PUP Guidance Center, he brings both technical expertise and practical problem-solving abilities. Contact him at riveroelijah5@gmail.com to discuss opportunities!',
+      'recruiter': 'For recruiters, Elijah is a standout candidate who combines technical excellence with real-world project experience. His work on the PUP Guidance Center demonstrates his ability to deliver production-ready applications. He\'s currently completing his OJT hours and is eager to contribute to innovative teams.',
+      'interview': 'Elijah would be delighted to discuss how his skills and experience align with your company needs. He\'s particularly interested in roles involving modern web technologies and innovative projects. Feel free to reach out to schedule an interview!',
+      'tagalog': 'Kumusta! Ako si Elijah Joyce Rivero, ang AI representative ni Elijah. Dito ko ako para sabihin sa kanyahan at mga kasanayan niya. Paano ko makakatulong sa iyo?',
+      'maranan': 'Hello! I\'m Elijah Joyce Rivero, representing Elijah Rivero. I\'m here to help you understand his qualifications and why he\'s the right choice for your team. Ano ang maitutulong mo sa kanyahan ni Elijah?'
     };
 
     const lowerMessage = inputValue.toLowerCase();
@@ -81,10 +88,10 @@ const SimpleChatbot = () => {
     // Default responses for other queries
     if (!botResponse) {
       const defaultResponses = [
-        "That's interesting! For more specific information about my work, you might want to check out my projects section or skills section in the portfolio.",
-        "I can tell you about my skills, projects, experience, or how to contact me. What would you like to know?",
-        "I have diverse experience in web development. Is there something specific about my technical skills or projects you'd like to explore?",
-        "Feel free to ask about my background, my projects, or my technical expertise. I'm here to help!"
+        "That's interesting! For more specific information about Elijah's work, you might want to check out his projects section or skills section in portfolio.",
+        "I can tell you about Elijah's skills, projects, experience, or how to contact him. What would you like to know?",
+        "Elijah has diverse experience in web development. Is there something specific about his technical skills or projects you'd like to explore?",
+        "Feel free to ask about Elijah's background, his projects, or his technical expertise. I'm here to help!"
       ];
       botResponse = defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
     }
@@ -163,8 +170,8 @@ const SimpleChatbot = () => {
                   <FiCpu className="text-white text-sm" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">AI Assistant</h3>
-                  <p className="text-cyan-300 text-xs">Portfolio Assistant</p>
+                  <h3 className="text-white font-semibold">Elijah Rivero</h3>
+                  <p className="text-cyan-300 text-xs">Developer</p>
                 </div>
               </div>
               <button
@@ -253,7 +260,7 @@ const SimpleChatbot = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about Elijah's skills, projects..."
+                  placeholder="Ask about my skills, projects..."
                   className="flex-1 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:border-cyan-400/50 focus:bg-white/15 transition-all duration-300"
                 />
                 <button
