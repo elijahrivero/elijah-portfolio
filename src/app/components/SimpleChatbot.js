@@ -87,6 +87,9 @@ const SimpleChatbot = () => {
     const lowerMessage = inputValue.toLowerCase();
     let botResponse = null;
 
+    // Enhanced keyword matching with more context
+    const messageWords = lowerMessage.split(/\s+/);
+    
     // Check for keywords and return appropriate responses
     for (const [key, response] of Object.entries(responses)) {
       if (lowerMessage.includes(key)) {
@@ -95,13 +98,57 @@ const SimpleChatbot = () => {
       }
     }
 
+    // Enhanced context-aware responses for common questions
+    if (!botResponse) {
+      // Work-related questions
+      if (lowerMessage.includes('what do you do') || lowerMessage.includes('what\'s your job') || lowerMessage.includes('what work')) {
+        botResponse = "I'm a Full Stack Developer currently working as a Junior Developer at LiftFront while completing my BSIT degree at PUP. I build web applications using modern technologies like Next.js, React, PHP, and MySQL.";
+      }
+      // Experience questions
+      else if (lowerMessage.includes('how much experience') || lowerMessage.includes('years of experience') || lowerMessage.includes('how long')) {
+        botResponse = "I started my journey in web development during high school and gained professional experience at LiftFront. I combine academic knowledge from PUP with practical industry experience to deliver quality solutions.";
+      }
+      // Learning questions
+      else if (lowerMessage.includes('what are you learning') || lowerMessage.includes('currently learning') || lowerMessage.includes('studying')) {
+        botResponse = "I'm currently pursuing my Bachelor of Science in Information Technology at PUP Lopez, Quezon. I'm also continuously learning new technologies and best practices in web development through my work at LiftFront.";
+      }
+      // Future plans
+      else if (lowerMessage.includes('what are your goals') || lowerMessage.includes('future plans') || lowerMessage.includes('what\'s next')) {
+        botResponse = "I aim to become a senior full-stack developer and eventually lead development teams. I'm passionate about creating impactful applications that solve real-world problems while exploring the intersection of technology and creative arts.";
+      }
+      // Why hire questions
+      else if (lowerMessage.includes('why should i hire') || lowerMessage.includes('why choose you') || lowerMessage.includes('what makes you')) {
+        botResponse = "I bring both technical excellence and real-world project experience. My work on PUP Guidance Center and LiftFront Academy demonstrates my ability to deliver production-ready applications. I'm dedicated, continuously learning, and passionate about creating quality solutions.";
+      }
+      // Availability questions
+      else if (lowerMessage.includes('are you available') || lowerMessage.includes('when can you start') || lowerMessage.includes('available for')) {
+        botResponse = "I'm currently completing my BSIT degree and working at LiftFront, but I'm open to discussing new opportunities that align with my skills and career goals. Feel free to reach out to discuss potential collaborations or positions.";
+      }
+      // Technology questions
+      else if (lowerMessage.includes('what technologies') || lowerMessage.includes('what tech') || lowerMessage.includes('programming languages')) {
+        botResponse = "I work with Frontend: Next.js, React.js, Tailwind CSS, HTML5, CSS, JavaScript. Backend: PHP/Laravel, Filament PHP, MySQL, Python, JavaScript. Tools: GitHub, VS Code, Vercel, Canva, MS Excel.";
+      }
+      // Project questions
+      else if (lowerMessage.includes('tell me about your projects') || lowerMessage.includes('show me projects') || lowerMessage.includes('what projects')) {
+        botResponse = "I've built several impressive projects including PUP Guidance Center (web-based platform for PUP services), LiftFront Academy (gamified coding education), Palette of Eternity (digital arts platform), and Elijah Gallery (photographic platform). Each showcases different technical and creative abilities.";
+      }
+      // Contact questions
+      else if (lowerMessage.includes('how can i contact') || lowerMessage.includes('how to reach') || lowerMessage.includes('contact info')) {
+        botResponse = "You can reach me at riveroelijah5@gmail.com or call 09912562105. I'm located in Lopez, Quezon. My portfolio is at https://elijahrivero.vercel.app/ and I'm always open to discussing opportunities!";
+      }
+      // Education questions
+      else if (lowerMessage.includes('where did you study') || lowerMessage.includes('your education') || lowerMessage.includes('what school')) {
+        botResponse = "I'm pursuing my Bachelor of Science in Information Technology at Polytechnic University of the Philippines - Lopez, Quezon (2022 - Present). I completed my Senior High School STEM education at Lopez National Comprehensive High School (2020 - 2022).";
+      }
+    }
+
     // Default responses for other queries
     if (!botResponse) {
       const defaultResponses = [
-        "That's interesting! For more specific information about Elijah's work, you might want to check out his projects section or skills section in portfolio.",
-        "I can tell you about Elijah's skills, projects, experience, or how to contact him. What would you like to know?",
-        "Elijah has diverse experience in web development. Is there something specific about his technical skills or projects you'd like to explore?",
-        "Feel free to ask about Elijah's background, his projects, or his technical expertise. I'm here to help!"
+        "I'd be happy to help! You can ask me about my skills, projects, work experience, education, or how to contact me. What interests you most?",
+        "Great question! I can tell you about my web development projects, my work at LiftFront, my studies at PUP, or my technical skills. What would you like to know?",
+        "I'm here to help you learn more about me! Feel free to ask about my background, projects, technologies I use, or career opportunities.",
+        "Thanks for your message! I can share information about my full-stack development work, my portfolio projects, my education, or discuss potential collaborations. What's on your mind?"
       ];
       botResponse = defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
     }
