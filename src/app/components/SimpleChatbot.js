@@ -128,13 +128,13 @@ const SimpleChatbot = () => {
     <>
       {/* Chat Button */}
       <motion.button
-        onClick={toggleChat}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl z-40 group"
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 z-40 border border-cyan-400/30"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        onClick={toggleChat}
       >
         <FiMessageSquare className="text-xl group-hover:rotate-12 transition-transform duration-300" />
         
@@ -157,7 +157,7 @@ const SimpleChatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] bg-slate-900/95 backdrop-blur-xl border border-cyan-400/20 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-0 right-0 left-0 top-0 w-full h-full sm:bottom-24 sm:right-6 sm:left-auto sm:top-auto sm:w-80 sm:w-96 sm:h-[500px] bg-slate-900/95 backdrop-blur-xl border border-cyan-400/20 sm:rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
