@@ -48,7 +48,7 @@ const SimpleChatbot = () => {
       'experience': 'I\'m currently working as a Junior Developer at LiftFront (Oct 2025 - Jan 2026) where I contribute to web applications using Next.js, Tailwind CSS, and Node.js. I collaborate with senior developers, participate in sprint planning, and handle backend integration and API development.',
       'education': 'I\'m pursuing my Bachelor of Science in Information Technology at Polytechnic University of the Philippines - Lopez, Quezon (2022 - Present). I completed my Senior High School STEM education at Lopez National Comprehensive High School (2020 - 2022).',
       'contact': 'You can reach me at riveroelijah5@gmail.com or call 09912562105. I\'m located in Lopez, Quezon. My portfolio is available at https://elijahrivero.vercel.app/ and I\'m always open to discussing new opportunities and collaborations.',
-      'about': 'I\'m Elijah Joyce Rivero, a passionate Full Stack Developer who loves crafting scalable applications using modern technologies. I focus on delivering efficient and user-centered solutions while pursuing my BSIT degree at PUP.',
+      'about': 'I\'m Elijah Joyce Rivero, a passionate Full Stack Developer who loves crafting scalable applications using modern technologies. I focus on delivering efficient and user-centered solutions while pursuing my BSIT degree at PUP and gaining professional experience at LiftFront.',
       'hobbies': 'When not coding, I enjoy UI/UX Design, Artistic Storytelling, and Digital Photography. These interests help me create more engaging and visually appealing applications that combine technical excellence with creative expression.',
       'availability': 'I\'m currently completing my BSIT degree and gaining professional experience at LiftFront. I\'m open to discussing new opportunities and collaborations that align with my skills in modern web development and creative design.',
       'technologies': 'I work with a modern tech stack including Next.js, React.js, Tailwind CSS, HTML5, CSS, JavaScript for frontend, and PHP/Laravel, Filament PHP, MySQL, Python for backend. My tools include GitHub, VS Code, Vercel, Canva, and MS Excel.',
@@ -77,6 +77,16 @@ const SimpleChatbot = () => {
       'palette': 'Palette of Eternity is a curated digital platform I developed celebrating 30 works of human expression across Literary, Visual, and Performing Arts. It\'s a centralized hub to explore connections between different artistic storytelling formats.',
       'gallery': 'Elijah Gallery is my custom-built digital gallery platform featuring curated photographic albums. I built it with a focus on performance and clean aesthetics to showcase photography in an engaging way.',
       'interests': 'My interests include UI/UX Design, Artistic Storytelling, and Digital Photography. These creative pursuits complement my technical skills and help me create more engaging and visually appealing applications.',
+      'resume': 'My resume includes my work as a Junior Developer at LiftFront, my BSIT studies at PUP, projects like PUP Guidance Center and LiftFront Academy, and certifications in enterprise networking and AI. I\'m proficient in Next.js, React, PHP/Laravel, and modern web technologies.',
+      'cv': 'My CV showcases my experience as a Junior Developer at LiftFront, my education at PUP, my technical skills in full-stack development, and my portfolio of web applications. I\'m available for opportunities in modern web development.',
+      'qualifications': 'My qualifications include a BSIT degree from PUP (in progress), professional experience at LiftFront, proficiency in Next.js, React, PHP/Laravel, MySQL, and certifications in enterprise networking and AI technologies.',
+      'strengths': 'My strengths include full-stack development skills, experience with real-world projects, ability to work in team environments, continuous learning mindset, and passion for creating user-centered solutions.',
+      'weakness': 'I believe in continuous improvement and always work to enhance my skills. While I\'m confident in my abilities, I\'m always eager to learn new technologies and best practices.',
+      'salary': 'I\'m open to discussing compensation that aligns with my skills, experience, and the value I can bring to your team. I\'m more focused on finding the right opportunity and growth potential.',
+      'location': 'I\'m based in Lopez, Quezon, but I\'m open to remote opportunities and can work flexibly to meet project needs. I\'m also available for on-site work when required.',
+      'age': 'I\'m a 4th-year BSIT student at PUP, gaining professional experience while completing my degree. I bring fresh perspectives combined with practical industry knowledge.',
+      'birthday': 'That\'s personal information I prefer to keep private, but I\'d be happy to discuss my professional qualifications, skills, and how I can contribute to your team!',
+      'personal': 'I prefer to focus on my professional qualifications and how my skills can benefit your team. I\'m happy to discuss my technical expertise, projects, and career goals in detail.',
       'hire': 'I\'m an excellent candidate for any web development role! With my strong technical skills in Next.js, React, PHP/Laravel, and MySQL, plus my experience at LiftFront and academic background at PUP, I bring both technical expertise and practical problem-solving abilities. Contact me at riveroelijah5@gmail.com to discuss opportunities!',
       'recruiter': 'For recruiters, I\'m a standout candidate who combines technical excellence with real-world project experience. My work on PUP Guidance Center and LiftFront Academy demonstrates my ability to deliver production-ready applications. I\'m currently completing my BSIT and am eager to contribute to innovative teams.',
       'interview': 'I would be delighted to discuss how my skills and experience align with your company needs. I\'m particularly interested in roles involving modern web technologies and innovative projects. Feel free to reach out to schedule an interview!',
@@ -139,6 +149,30 @@ const SimpleChatbot = () => {
       // Education questions
       else if (lowerMessage.includes('where did you study') || lowerMessage.includes('your education') || lowerMessage.includes('what school')) {
         botResponse = "I'm pursuing my Bachelor of Science in Information Technology at Polytechnic University of the Philippines - Lopez, Quezon (2022 - Present). I completed my Senior High School STEM education at Lopez National Comprehensive High School (2020 - 2022).";
+      }
+      // Resume/CV questions
+      else if (lowerMessage.includes('resume') || lowerMessage.includes('cv') || lowerMessage.includes('qualifications')) {
+        botResponse = "My resume highlights my experience as a Junior Developer at LiftFront, my BSIT studies at PUP, projects like PUP Guidance Center and LiftFront Academy, and certifications in enterprise networking and AI. I'm proficient in Next.js, React, PHP/Laravel, and modern web technologies.";
+      }
+      // Strengths questions
+      else if (lowerMessage.includes('strengths') || lowerMessage.includes('what are your strengths') || lowerMessage.includes('good at')) {
+        botResponse = "My strengths include full-stack development skills, experience with real-world projects, ability to work in team environments, continuous learning mindset, and passion for creating user-centered solutions.";
+      }
+      // Location questions
+      else if (lowerMessage.includes('where are you') || lowerMessage.includes('location') || lowerMessage.includes('based')) {
+        botResponse = "I'm based in Lopez, Quezon, but I'm open to remote opportunities and can work flexibly to meet project needs. I'm also available for on-site work when required.";
+      }
+      // Age/Year questions
+      else if (lowerMessage.includes('how old') || lowerMessage.includes('age') || lowerMessage.includes('year')) {
+        botResponse = "I'm a 4th-year BSIT student at PUP, gaining professional experience while completing my degree. I bring fresh perspectives combined with practical industry knowledge.";
+      }
+      // Personal questions (redirected professionally)
+      else if (lowerMessage.includes('birthday') || lowerMessage.includes('personal') || lowerMessage.includes('relationship')) {
+        botResponse = "I prefer to focus on my professional qualifications and how my skills can benefit your team. I'm happy to discuss my technical expertise, projects, and career goals in detail.";
+      }
+      // Salary/Compensation questions
+      else if (lowerMessage.includes('salary') || lowerMessage.includes('how much') || lowerMessage.includes('compensation')) {
+        botResponse = "I'm open to discussing compensation that aligns with my skills, experience, and the value I can bring to your team. I'm more focused on finding the right opportunity and growth potential.";
       }
     }
 
