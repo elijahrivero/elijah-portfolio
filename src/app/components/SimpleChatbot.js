@@ -10,7 +10,7 @@ const SimpleChatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Elijah Joyce Rivero, Elijah's AI Representative. I'm here to tell you about his skills, projects, and help you understand why you should hire him. How can I assist you today?",
+      text: "Hi! I'm Elijah Joyce Rivero. I'm here to tell you about his skills, projects, and help you understand why you should hire him. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -99,7 +99,7 @@ const SimpleChatbot = () => {
         'academy': 'LiftFront Academy is a gamified online coding education platform I contributed to, featuring interactive browser-based lessons, a real-time code editor, XP progression, and leaderboard systems that help users learn programming.',
         'palette': 'Palette of Eternity is a curated digital platform I developed celebrating 30 works of human expression across Literary, Visual, and Performing Arts. It\'s a centralized hub to explore connections between different artistic storytelling formats.',
         'gallery': 'Elijah Gallery is my custom-built digital gallery platform featuring curated photographic albums. I built it with a focus on performance and clean aesthetics to showcase photography in an engaging way.',
-        'interests': 'My interests include UI/UX Design, Artistic Storytelling, and Digital Photography. These creative pursuits complement my technical skills and help me create more engaging and visually appealing applications.',
+        'interests': 'My interests include UI/UX Design, Artistic Storytelling, and Digital Photography. These creative pursuits complement my technical skills and help me create more engaging and visually appealing applications.', 
         'resume': 'My resume includes my work as a Junior Developer at LiftFront, my BSIT studies at PUP, projects like PUP Guidance Center and LiftFront Academy, and certifications in enterprise networking and AI. I\'m proficient in Next.js, React, PHP/Laravel, and modern web technologies.',
         'cv': 'My CV showcases my experience as a Junior Developer at LiftFront, my education at PUP, my technical skills in full-stack development, and my portfolio of web applications. I\'m available for opportunities in modern web development.',
         'qualifications': 'My qualifications include a BSIT degree from PUP (in progress), professional experience at LiftFront, proficiency in Next.js, React, PHP/Laravel, MySQL, and certifications in enterprise networking and AI technologies.',
