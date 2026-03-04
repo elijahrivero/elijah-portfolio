@@ -10,7 +10,7 @@ const SimpleChatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Elijah Joyce Rivero. I'm here to tell you about his skills, projects, and help you understand why you should hire him. How can I assist you today?",
+      text: "Hi! I'm Elijah Joyce Rivero. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date()
     }
