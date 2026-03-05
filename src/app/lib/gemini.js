@@ -4,7 +4,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize Gemini with your API key
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || 'AIzaSyDQWInn0iq_MWQmwodlPPNoUFRqonrhb5U');
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
 // Create a comprehensive context for Elijah's portfolio
 const ELIJAH_CONTEXT = `
