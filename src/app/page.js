@@ -145,6 +145,17 @@ const projects = [
     featured: false,
     image: "/poe.jfif",
     gradient: "from-violet-500 to-purple-500"
+  },
+  {
+    id: 5,
+    title: "LiftFront Academy",
+    description: "An interactive gamified coding bootcamp platform with a real-time code editor, instant test feedback, XP progression system, daily streaks, competitive leaderboards, 50+ achievement badges, and verifiable certificates. Features 20+ courses across 500+ lessons built to make learning to code engaging and effective.",
+    url: "https://academy.liftfront.com/",
+    category: "E-Learning Platform",
+    technologies: ["Next.js", "Tailwind CSS", "Firebase"],
+    featured: true,
+    image: "",
+    gradient: "from-blue-500 to-violet-500"
   }
 ];
 
