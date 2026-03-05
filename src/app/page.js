@@ -24,6 +24,7 @@ import {
 } from "react-icons/fi";
 import { FaRocket } from "react-icons/fa";
 import SimpleChatbot from "./components/SimpleChatbot";
+import ProcessShowcase from "./components/ProcessShowcase";
 
 // Particle Background Component
 const ParticleBackground = () => {
@@ -776,6 +777,9 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
+      {/* Process Section */}
+      <ProcessShowcase />
 
       {/* Contact Section */}
       <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
