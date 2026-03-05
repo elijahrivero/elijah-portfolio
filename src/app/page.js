@@ -130,7 +130,7 @@ const projects = [
     description: "A comprehensive boarding house management system designed to streamline operations, manage tenants, track payments, and monitor room occupancy with an intuitive dashboard interface.",
     url: "https://riverobh.vercel.app",
     category: "Management System",
-    technologies: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS", "Framer Motion"],
+    technologies: ["Next.js", "React", "Node.js", "Firebase", "Tailwind CSS", "Framer Motion"],
     featured: true,
     image: "/riverobh.png",
     gradient: "from-green-500 to-emerald-500"
@@ -152,9 +152,9 @@ const projects = [
     description: "An interactive gamified coding bootcamp platform with a real-time code editor, instant test feedback, XP progression system, daily streaks, competitive leaderboards, 50+ achievement badges, and verifiable certificates. Features 20+ courses across 500+ lessons built to make learning to code engaging and effective.",
     url: "https://academy.liftfront.com/",
     category: "E-Learning Platform",
-    technologies: ["Next.js", "Tailwind CSS", "Firebase"],
+    technologies: ["Next.js", "Tailwind CSS", "Firebase", "Gamified"],
     featured: true,
-    image: "",
+    image: "/academy-liftfront.png",
     gradient: "from-blue-500 to-violet-500"
   }
 ];
