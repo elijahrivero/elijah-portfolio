@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiHome, FiUser, FiGrid, FiMail, FiMenu, FiX, FiAward, FiCode } from "react-icons/fi";
+import { FiHome, FiUser, FiGrid, FiMail, FiMenu, FiX, FiAward } from "react-icons/fi";
 import InteractiveBg from "./InteractiveBg";
 
 const navLinks = [
@@ -10,7 +10,6 @@ const navLinks = [
   { href: "#work", label: "Work", icon: <FiGrid /> },
   { href: "#about", label: "About", icon: <FiUser /> },
   { href: "#certifications", label: "Certifications", icon: <FiAward /> },
-  { href: "#how-i-build", label: "How I Build", icon: <FiCode /> },
   { href: "#contact", label: "Contact", icon: <FiMail /> },
 ];
 
@@ -20,7 +19,7 @@ export default function Navigation({ children }) {
   const [scrolled, setScrolled] = useState(false);
   const navRefs = useRef([]);
   const pillRef = useRef(null);
-  const [underlineProps, setUnderlineProps] = useState({ left: 0, width: 28, opacity: 0 });
+  const [underlineProps, setUnderlineProps] = useState({ left: 0, width: 28 });
 
   // Get the index of the active link
   const activeIndex = navLinks.findIndex(link => link.href === active);
@@ -30,27 +29,22 @@ export default function Navigation({ children }) {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 20);
 
-      // Get all sections and their positions with better accuracy
+      // Get all sections and their positions
       const sections = navLinks.map(link => {
         const section = document.querySelector(link.href);
-        if (!section) return { href: link.href, top: 0, bottom: 0 };
-        
-        const rect = section.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
         return {
           href: link.href,
-          top: rect.top + scrollTop - 120, // Better offset for navbar height
-          bottom: rect.top + scrollTop + rect.offsetHeight
+          top: section ? section.offsetTop - 100 : 0, // Adjust for earlier activation
+          bottom: section ? section.offsetTop + section.offsetHeight : 0
         };
       });
 
-      // Find which section we're currently in with improved logic
+      // Find which section we're currently in
       let current = "#home";
       
       for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
-        if (scrollY >= section.top - 100) { // Better buffer zone
+        if (scrollY >= section.top - 50) { // Earlier activation with 50px buffer
           current = section.href;
         }
       }
@@ -58,74 +52,28 @@ export default function Navigation({ children }) {
       setActive(current);
     };
 
-    // Use throttling for better performance
-    let ticking = false;
-    const throttledHandleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", throttledHandleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Smooth scroll function
-  const smoothScrollTo = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.offsetTop - 100; // Account for fixed navbar
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   useEffect(() => {
     function updateUnderline() {
       const activeRef = navRefs.current[activeIndex];
       if (activeRef && pillRef.current) {
         const underlineWidth = 28;
-        const pillRect = pillRef.current.getBoundingClientRect();
-        const iconRect = activeRef.getBoundingClientRect();
-        const pillLeft = pillRef.current.offsetLeft;
-        
-        // Calculate position relative to pill container
         const iconLeft = activeRef.offsetLeft;
         const iconWidth = activeRef.offsetWidth;
         const left = iconLeft + iconWidth / 2 - underlineWidth / 2;
-        
-        setUnderlineProps({ left, width: underlineWidth, opacity: 1 });
+        setUnderlineProps({ left, width: underlineWidth });
       }
     }
-    
-    // Initial update after component mounts
-    const timer = setTimeout(() => {
-      updateUnderline();
-    }, 100);
-    
-    // Update on resize
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(updateUnderline, 50);
     window.addEventListener('resize', updateUnderline);
-    
-    // Also update when component mounts or active changes
-    const resizeObserver = new ResizeObserver(() => {
-      setTimeout(updateUnderline, 10);
-    });
-    
-    if (pillRef.current) {
-      resizeObserver.observe(pillRef.current);
-    }
-    
     return () => {
       clearTimeout(timer);
       window.removeEventListener('resize', updateUnderline);
-      resizeObserver.disconnect();
     };
   }, [active, activeIndex]);
 
@@ -161,11 +109,7 @@ export default function Navigation({ children }) {
                     className={`relative flex items-center justify-center w-10 h-10 transition-colors duration-300 ${
                       active === link.href ? 'text-cyan-200' : 'text-secondary hover:text-cyan-200'
                     }`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      smoothScrollTo(link.href);
-                      setActive(link.href);
-                    }}
+                    onClick={() => setActive(link.href)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                     aria-label={link.label}
@@ -177,11 +121,7 @@ export default function Navigation({ children }) {
                 {/* Active underline - shows for all sections */}
                 <motion.span
                   className="absolute bottom-2 h-1 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.6)]"
-                  animate={{ 
-                    left: underlineProps.left, 
-                    width: underlineProps.width,
-                    opacity: underlineProps.opacity || 1
-                  }}
+                  animate={{ left: underlineProps.left, width: underlineProps.width }}
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               </div>
@@ -279,9 +219,7 @@ export default function Navigation({ children }) {
                           ? 'text-cyan-200 bg-white/5 border-cyan-400/30 shadow-[0_0_18px_rgba(34,211,238,0.25)]'
                           : 'text-secondary border-transparent hover:text-cyan-200 hover:bg-white/5 hover:border-cyan-400/30 hover:shadow-[0_0_14px_rgba(34,211,238,0.18)]'
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        smoothScrollTo(link.href);
+                      onClick={() => {
                         setActive(link.href);
                         setIsMobileMenuOpen(false);
                       }}
