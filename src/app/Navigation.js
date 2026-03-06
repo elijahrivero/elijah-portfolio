@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiHome, FiUser, FiGrid, FiMail, FiMenu, FiX, FiAward } from "react-icons/fi";
+import { FiHome, FiUser, FiGrid, FiMail, FiMenu, FiX, FiAward, FiLayers } from "react-icons/fi";
 import InteractiveBg from "./InteractiveBg";
 
 const navLinks = [
@@ -10,6 +10,7 @@ const navLinks = [
   { href: "#work", label: "Work", icon: <FiGrid /> },
   { href: "#about", label: "About", icon: <FiUser /> },
   { href: "#certifications", label: "Certifications", icon: <FiAward /> },
+  { href: "#showcase", label: "Process", icon: <FiLayers /> },
   { href: "#contact", label: "Contact", icon: <FiMail /> },
 ];
 
@@ -29,23 +30,16 @@ export default function Navigation({ children }) {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 20);
 
-      // Get all sections and their positions
-      const sections = navLinks.map(link => {
-        const section = document.querySelector(link.href);
-        return {
-          href: link.href,
-          top: section ? section.offsetTop - 100 : 0, // Adjust for earlier activation
-          bottom: section ? section.offsetTop + section.offsetHeight : 0
-        };
-      });
-
-      // Find which section we're currently in
+      // Find which section we're currently in using getBoundingClientRect
       let current = "#home";
-      
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        if (scrollY >= section.top - 50) { // Earlier activation with 50px buffer
-          current = section.href;
+
+      for (const link of navLinks) {
+        const section = document.querySelector(link.href);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 150) {
+            current = link.href;
+          }
         }
       }
 
