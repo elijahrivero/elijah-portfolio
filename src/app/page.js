@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -171,6 +171,16 @@ const certifications = [
 ];
 
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    const unsubscribe = scrollY.on("change", (latest) => {
+      setScrolled(latest > 50);
+    });
+    return unsubscribe;
+  }, [scrollY]);
+
   return (
     <>
       {/* Schema.org structured data for SEO */}
@@ -787,6 +797,179 @@ export default function Home() {
             ))}
           </div>
         </motion.div>
+      </section>
+
+      {/* How I Build Websites Section */}
+      <section id="how-i-build" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
+        <motion.div
+          className="text-center mb-12 sm:mb-20"
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 120, damping: 18 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, type: "spring", stiffness: 120 }}
+            viewport={{ once: true }}
+          >
+            How I Build Websites
+          </motion.h2>
+          <motion.p
+            className="text-secondary text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+          >
+            My approach to creating modern, scalable web applications
+          </motion.p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+          {/* Left Column - Development Process */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">Development Process</h3>
+            
+            {[
+              {
+                title: "1. Discovery & Planning",
+                description: "Understanding requirements, defining goals, and creating project roadmap",
+                icon: <FiBook className="text-cyan-400" />,
+                color: "from-cyan-500/20 to-blue-500/20 border-cyan-500/30"
+              },
+              {
+                title: "2. Design & Architecture",
+                description: "Creating wireframes, UI/UX design, and technical architecture",
+                icon: <FiLayers className="text-purple-400" />,
+                color: "from-purple-500/20 to-pink-500/20 border-purple-500/30"
+              },
+              {
+                title: "3. Development",
+                description: "Building frontend and backend with modern technologies",
+                icon: <FiCode className="text-green-400" />,
+                color: "from-green-500/20 to-emerald-500/20 border-green-500/30"
+              },
+              {
+                title: "4. Testing & Deployment",
+                description: "Quality assurance, testing, and deploying to production",
+                icon: <FiZap className="text-yellow-400" />,
+                color: "from-yellow-500/20 to-orange-500/20 border-yellow-500/30"
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                className={`bg-gradient-to-br ${step.color} backdrop-blur-xl rounded-xl p-6 border hover:shadow-lg transition-all duration-300`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-black/30 flex items-center justify-center">
+                    {step.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-2">{step.title}</h4>
+                    <p className="text-secondary text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Right Column - Technologies & Tools */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">Tech Stack & Tools</h3>
+            
+            <div className="space-y-4">
+              {Object.entries(skillCategories).map(([category, skills], index) => (
+                <motion.div
+                  key={category}
+                  className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl rounded-xl p-6 border border-white/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                >
+                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                    {category === "Frontend" && <FiGlobe className="text-blue-400" />}
+                    {category === "Backend" && <FiDatabase className="text-green-400" />}
+                    {category === "Tools & Platforms" && <FiSmartphone className="text-purple-400" />}
+                    {category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skillIndex}
+                        className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full text-xs sm:text-sm text-white/80"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.1, backgroundColor: "rgba(59, 130, 246, 0.3)" }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Best Practices */}
+            <motion.div
+              className="bg-gradient-to-br from-violet-500/10 to-purple-500/10 backdrop-blur-xl rounded-xl p-6 border border-violet-500/20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <FiAward className="text-violet-400" />
+                Best Practices
+              </h4>
+              <ul className="space-y-2 text-secondary text-sm">
+                <li className="flex items-start gap-2">
+                  <FiCircle className="text-violet-400 mt-1 flex-shrink-0" size={8} />
+                  <span>Clean, maintainable code with proper documentation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FiCircle className="text-violet-400 mt-1 flex-shrink-0" size={8} />
+                  <span>Responsive design for all devices and screen sizes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FiCircle className="text-violet-400 mt-1 flex-shrink-0" size={8} />
+                  <span>Performance optimization and SEO best practices</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FiCircle className="text-violet-400 mt-1 flex-shrink-0" size={8} />
+                  <span>Security-first approach with proper validation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FiCircle className="text-violet-400 mt-1 flex-shrink-0" size={8} />
+                  <span>Agile development with continuous integration</span>
+                </li>
+              </ul>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Process Section */}

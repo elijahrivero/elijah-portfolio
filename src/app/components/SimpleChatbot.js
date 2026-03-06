@@ -10,7 +10,7 @@ const SimpleChatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Elijah Joyce Rivero. Thanks for visiting my portfolio! Feel free to ask me anything about my work, projects, or experience. I'd love to chat with you!",
+      text: "Hi! I'm Elijah Joyce Rivero. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -136,11 +136,11 @@ const SimpleChatbot = () => {
         }
         // Taglish/Tagalog questions
         else if (lowerMessage.includes('ano') || lowerMessage.includes('dinner') || lowerMessage.includes('kain') || lowerMessage.includes('gutom') || lowerMessage.includes('ulam') || lowerMessage.includes('lunch') || lowerMessage.includes('breakfast')) {
-          botResponse = "Kumusta! I understand you're asking about food, but I'd love to tell you about my web development work and projects instead! Ano ang gusto mong malaman tungkol sa mga technical skills o projects ko?";
+          botResponse = "Kumusta! I understand you're asking about food, but I'm here to tell you about Elijah Joyce Rivero's web development skills and projects. Let me share about Elijah's work instead! Ano ang gusto mong malaman tungkol sa kanyang mga technical skills o projects?";
         }
         // Tagalog frustration/questions about AI understanding
         else if (lowerMessage.includes('bakit') || lowerMessage.includes('ulit') || lowerMessage.includes('naiintindihan') || lowerMessage.includes('di mo') || lowerMessage.includes('sinasabi') || lowerMessage.includes('qustion')) {
-          botResponse = "Naiintindihan ko! Sorry if I'm not answering your food questions correctly. I'm here to chat about my web development work, my projects at LiftFront, and my technical skills. Let me help you with that instead! Ano ang gusto mong malaman about me?";
+          botResponse = "Naiintindihan ko! Sorry if I'm not answering your food questions correctly. I'm Elijah's AI assistant, designed to help you learn about Elijah's web development work, projects at LiftFront, and technical skills. Let me help you with that instead! Ano ang gusto mong malaman about Elijah?";
         }
         // Work-related questions
         else if (lowerMessage.includes('what do you do') || lowerMessage.includes('what\'s your job') || lowerMessage.includes('what work')) {
@@ -200,7 +200,7 @@ const SimpleChatbot = () => {
         }
         // Personal questions (redirected professionally)
         else if (lowerMessage.includes('birthday') || lowerMessage.includes('personal') || lowerMessage.includes('relationship') || lowerMessage.includes('food') || lowerMessage.includes('eat') || lowerMessage.includes('kumain') || lowerMessage.includes('gutom') || lowerMessage.includes('ulam') || lowerMessage.includes('dinner') || lowerMessage.includes('lunch') || lowerMessage.includes('breakfast')) {
-          botResponse = "I'd be happy to chat with you about my professional background as a Full Stack Developer! I can tell you about my work at LiftFront, my projects like PUP Guidance Center, or my technical skills in Next.js and React. What would you like to know about my experience?";
+          botResponse = "I'm here to help you learn about Elijah Joyce Rivero's professional background as a Full Stack Developer! I can tell you about his work at LiftFront, his projects like PUP Guidance Center, or his technical skills in Next.js and React. What would you like to know about his professional experience?";
         }
         // Salary/Compensation questions
         else if (lowerMessage.includes('salary') || lowerMessage.includes('how much') || lowerMessage.includes('compensation')) {
