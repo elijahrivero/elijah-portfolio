@@ -3,7 +3,7 @@ import Navigation from "./Navigation";
 import { Inter } from "next/font/google";
 
 export const metadata = {
-  title: "Elijah Rivero - Full Stack Developer",
+  title: "Elijah Rivero",
   description: "Crafting scalable full-stack applications using modern technologies to deliver efficient and user-centered solutions. Explore my portfolio of web applications, management systems, and digital galleries.",
   keywords: ["Full Stack Developer", "Web Developer", "Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS", "JavaScript", "TypeScript", "Web Development", "Portfolio"],
   authors: [{ name: "Elijah Rivero" }],
