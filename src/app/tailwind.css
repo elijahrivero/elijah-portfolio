@@ -9,9 +9,13 @@
     --accent: #153a6b;
     --card: rgba(0, 31, 77, 0.2);
     --card-border: #153a6b;
+    --bg-galaxy: url('/galaxy.jpg');
   }
 
   html, body {
+    background-image: var(--bg-galaxy);
+    background-size: cover;
+    background-attachment: fixed;
     background-color: var(--background);
     color: var(--foreground);
     font-family: 'Inter', Arial, Helvetica, sans-serif;
